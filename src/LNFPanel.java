@@ -20,7 +20,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class LNFPanel extends JPanel implements ActionListener {
 
   private ButtonGroup buttonGroup = new ButtonGroup();
-  
+
   public LNFPanel() {
     setLayout(new GridLayout(1, 3));
 
