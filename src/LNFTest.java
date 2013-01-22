@@ -1,15 +1,12 @@
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.UIManager;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
-
-import java.lang.Exception;
+import javax.swing.UIManager;
 
 /**
  This class is for testing the Look and Feel property of Swing
@@ -19,32 +16,6 @@ import java.lang.Exception;
  @author Todd Gerspacher
 */
 public class LNFTest extends JFrame implements ActionListener {
-
-
- public JMenuBar menuBar()
- {
-  JMenu menu = new JMenu("Look and Feel");
-
-  menu.add( menuItem("Metal") );
-  menu.add( menuItem("Motif") );
-  menu.add( menuItem("Windows") );
-
-  JMenuBar menuBar = new JMenuBar();
-
-  menuBar.add( menu );
-
-  return menuBar;
- }
-
- public JMenuItem menuItem(String label)
- {
-  JMenuItem menuItem = new JMenuItem(label);
-
-  menuItem.setActionCommand(label);
-  menuItem.addActionListener(this);
-
-  return menuItem;
- }
 
  public void actionPerformed(ActionEvent evt)
  {
@@ -79,11 +50,36 @@ public class LNFTest extends JFrame implements ActionListener {
  }
 
  public static void main(String[] args) {
-   JMenuBar menubar = new JMenuBar();
+   JMenu menu = new JMenu("Look and Feel");
+
+   JMenuItem menuItem = new JMenuItem("Metal");
+
+//   menuItem.setActionCommand(label);
+//   menuItem.addActionListener(this);
+
+   menu.add( menuItem );
+
+   menuItem = new JMenuItem("Motif");
+
+// menuItem.setActionCommand(label);
+// menuItem.addActionListener(this);
+
+ menu.add( menuItem );
+
+ menuItem = new JMenuItem("Windows");
+
+  //menuItem.setActionCommand(label);
+  //menuItem.addActionListener(this);
+
+  menu.add( menuItem );
+
+   JMenuBar menuBar = new JMenuBar();
+
+   menuBar.add( menu );
 
    JFrame frame = new JFrame("Testing Java's Look & Feel");
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   frame.setJMenuBar(menubar);
+   frame.setJMenuBar(menuBar);
    frame.setVisible(true);
  }
 }
