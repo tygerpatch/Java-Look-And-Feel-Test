@@ -10,13 +10,13 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-/**
- This class is for testing the Look and Feel property of Swing
+//  Class allows you to switch between different Look and Feels.
+//  Currently only supports three Look and Feels: Metal, Motif, and Windows
 
- Menu allows you to switch to different look and feels: Metal, Motif, and Windows
+//  Check out the following resource for more information:
 
- @author Todd Gerspacher
-*/
+//  "How to Set the Look and Feel", The Java Tutorial, Sun Microsystems
+//  http://java.sun.com/docs/books/tutorial/uiswing/misc/plaf.html
 public class LNFPanel extends JPanel implements ActionListener {
 
   private ButtonGroup buttonGroup = new ButtonGroup();
@@ -52,13 +52,6 @@ public class LNFPanel extends JPanel implements ActionListener {
     if("Windows".equals(actionCommand))
       className = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 
-    /*
-    "How to Set the Look and Feel", The Java Tutorial, Sun Microsystems
-    http://java.sun.com/docs/books/tutorial/uiswing/misc/plaf.html
-
-    UIManager records which Look and Feel to use
-    SwingUtitilites changes components to the current Look and Feel
-   */
    try {
      UIManager.setLookAndFeel(className);
     SwingUtilities.updateComponentTreeUI(this);
