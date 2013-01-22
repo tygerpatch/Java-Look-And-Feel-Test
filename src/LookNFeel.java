@@ -22,83 +22,41 @@ public class LookNFeel extends JPanel implements ActionListener
 
  private GridBagConstraints gridConst;
 
- private JFrame frm;
+ public LookNFeel() {
+  // create_layoutManager();
+  // create_JPanel();
+  // create_JFrame();
+   gridBag = new GridBagLayout();
+   gridConst = new GridBagConstraints();
 
- public LookNFeel()
- {
-  create_layoutManager();
-  create_JPanel();
-  create_JFrame();
+   /*
+    "This field specifies the external padding of
+      the component, the minimum amount of space
+      between the component and the edges of its
+      display area." (java.awt.GridBagConstraints, Documenation)
+   */
+   gridConst.insets = new Insets(10, 10, 10, 10);
  }
 
- private void create_layoutManager()
- {
-  gridBag = new GridBagLayout();
-  gridConst = new GridBagConstraints(); 
+  private void create_JPanel() {
+    optMetal = new JRadioButton("Metal");
+    optMetal.setActionCommand("Metal");
+    optMetal.addActionListener(this);
+    gridBag.setConstraints(optMetal, gridConst);
+    add(optMetal);
 
-  /*
-   "This field specifies the external padding of
-     the component, the minimum amount of space 
-     between the component and the edges of its
-     display area." (java.awt.GridBagConstraints, Documenation)
-  */
-  gridConst.insets = new Insets(10, 10, 10, 10);
- }
+    optMotif = new JRadioButton("Motif");
+    optMotif.setActionCommand("Motif");
+    optMotif.addActionListener(this);
+    gridBag.setConstraints(optMotif, gridConst);
+    add(optMotif);
 
- private void create_JPanel()
- {
-  create_JRadioButtons();
-  set_ActionCommand_JRadioButtons();
-  add_ActionListeners_JRadioButtons();
-  set_constraints_JRadioButtons();
-  add_JRadioButtons();
- }
-
- private void create_JFrame()
- {
-  frm = new JFrame("Look - 'N' - Feel");
-  
-  frm.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-  frm.setContentPane( this );
-  frm.setSize(100, 150);
-  frm.setResizable(false);
-  frm.setVisible(true);
- }
-
- private void create_JRadioButtons()
- {
-  optMetal = new JRadioButton("Metal");
-  optMotif = new JRadioButton("Motif");
-  optWindows = new JRadioButton("Windows");
- }
-
- private void set_ActionCommand_JRadioButtons()
- {
-  optMetal.setActionCommand("Metal");
-  optMotif.setActionCommand("Motif");
-  optWindows.setActionCommand("Windows");
- }
-
- private void add_ActionListeners_JRadioButtons()
- {
-  optMetal.addActionListener( this );
-  optMotif.addActionListener( this );
-  optWindows.addActionListener( this );
- }
-
- private void set_constraints_JRadioButtons()
- {
-  gridBag.setConstraints( optMetal, gridConst );
-  gridBag.setConstraints( optMotif, gridConst );
-  gridBag.setConstraints( optWindows, gridConst );
- }
-
- private void add_JRadioButtons()
- {
-  add( optMetal );
-  add( optMotif );
-  add( optWindows );
- }
+    optWindows = new JRadioButton("Windows");
+    optWindows.setActionCommand("Windows");
+    optWindows.addActionListener(this);
+    gridBag.setConstraints(optWindows, gridConst);
+    add(optWindows);
+  }
 
  public void actionPerformed(ActionEvent evt)
  {
@@ -139,7 +97,7 @@ public class LookNFeel extends JPanel implements ActionListener
    */
    SwingUtilities.updateComponentTreeUI(this);
 
-   create_JFrame();
+//   create_JFrame();
   }
   catch(Exception e)
   {
@@ -156,8 +114,15 @@ public class LookNFeel extends JPanel implements ActionListener
   }
  }
 
- public static void main(String[] args)
- {
-  LookNFeel lnf = new LookNFeel();
- }
+  public static void main(String[] args) {
+    LookNFeel lnf = new LookNFeel();
+
+    JFrame frame = new JFrame("Look - 'N' - Feel");
+
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    // frame.setContentPane(this);
+    frame.setSize(100, 150);
+    frame.setResizable(false);
+    //frame.setVisible(true);
+  }
 }
