@@ -1,11 +1,9 @@
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
@@ -21,8 +19,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 */
 public class LNFPanel extends JPanel implements ActionListener {
 
+  private ButtonGroup buttonGroup = new ButtonGroup();
+  
   public LNFPanel() {
-    //setLayout(new GridLayout(3, 1));
+    setLayout(new GridLayout(1, 3));
 
     add(radioButton("Metal"));
     add(radioButton("Motif"));
@@ -33,6 +33,9 @@ public class LNFPanel extends JPanel implements ActionListener {
     JRadioButton radioButton = new JRadioButton(text);
     radioButton.setActionCommand(text);
     radioButton.addActionListener(this);
+
+    buttonGroup.add(radioButton);
+
     return radioButton;
   }
 
@@ -79,5 +82,6 @@ public class LNFPanel extends JPanel implements ActionListener {
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frame.setContentPane(new LNFPanel());
    frame.setVisible(true);
+   frame.pack();
   }
 }
