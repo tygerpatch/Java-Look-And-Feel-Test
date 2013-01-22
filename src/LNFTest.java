@@ -20,12 +20,6 @@ import java.lang.Exception;
 */
 public class LNFTest extends JFrame implements ActionListener {
 
- public LNFTest()
- {
-  super("Java Zip-Compression");
-  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-  setJMenuBar( menuBar() );
- }
 
  public JMenuBar menuBar()
  {
@@ -84,8 +78,12 @@ public class LNFTest extends JFrame implements ActionListener {
   }
  }
 
- public static void main(String[] args)
- {
-  new LNFTest().setVisible(true);
+ public static void main(String[] args) {
+   JMenuBar menubar = new JMenuBar();
+
+   JFrame frame = new JFrame("Testing Java's Look & Feel");
+   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   frame.setJMenuBar(menubar);
+   frame.setVisible(true);
  }
 }
